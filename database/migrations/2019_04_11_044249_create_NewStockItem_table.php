@@ -14,8 +14,10 @@ class CreateNewStockItemTable extends Migration
     public function up()
     {
         Schema::create('NewStockItem', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id');
+            $table->foreign('NewStockId')->references('id')->on('NewStock');
+            $table->foreign('LumbDetTypeId')->references('id')->on('lumbertype');
+            $table->foreign('LumbDetSizeId')->references('id')->on('lumbersize');
         });
     }
 

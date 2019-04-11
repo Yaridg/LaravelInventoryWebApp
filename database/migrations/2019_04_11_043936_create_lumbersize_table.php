@@ -14,8 +14,8 @@ class CreateLumbersizeTable extends Migration
     public function up()
     {
         Schema::create('lumbersize', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id');
+            $table->string('name');
         });
     }
 

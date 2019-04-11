@@ -14,8 +14,9 @@ class CreateNewStockTable extends Migration
     public function up()
     {
         Schema::create('NewStock', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id');
+            $table->foreign('UserId')->references('id')->on('users');
+            $table->date('date');
         });
     }
 
