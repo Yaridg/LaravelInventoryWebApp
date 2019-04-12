@@ -14,10 +14,11 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testIntegration()
     {
-        $response = $this->get('/');
+      $this->get('/') ->assertSee('Lumber');
+      $this->get('/') ->assertStatus(200);
 
-        $response->assertStatus(200);
+
     }
 }

@@ -1,22 +1,23 @@
 <?php
 
 namespace Tests\Unit;
-use App\Post;
-use PhpParser\Node\Expr\PostDec;
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class RemoveUserModelTest extends TestCase
 {
     /**
      * A basic test example.
-     *
+     *@test
      * @return void
      */
-    public function testBasicTest()
+    public function RemoveUser()
     {
+        $response = $this->get('removeUser');
 
-        $this->assertTrue(true);
+        $response->assertStatus(200);
+        $response->assertSeeText('Success');
     }
 }

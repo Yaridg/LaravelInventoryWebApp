@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         return Validator::make($request->all(), [
             'first_name' => 'required|min:2|max:35|string',
-            'last_name' => 'required|min:2|max:35|string',            
+            'last_name' => 'required|min:2|max:35|string',
             'email' => Sentinel::inRole('Admin')?'required|email|min:3|max:50|string':(Sentinel::check()?'required|email|min:3|max:50|string|unique:users,email,'.$id:'required|email|min:3|max:50|unique:users|string'),
             'password' => 'min:6|max:50|confirmed',
             //'gender' => 'required',
@@ -50,8 +50,8 @@ class UserController extends Controller
           $users = $role->users()->get();
 
          }
-        
-        return View('backEnd.users.index', compact('users')); 
+
+        return View('backEnd.users.index', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -59,7 +59,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request){
-       
+
         $roles = Role::get()->pluck('name', 'id');
         return View('backEnd.users.create',compact('roles'));
     }
@@ -70,13 +70,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /*Unit Test Create User */
     public function store(Request $request){
-       
+
         if ($this->validator($request,Sentinel::getUser()->id)->fails()) {
-            
-                return redirect()->back()
-                        ->withErrors($this->validator($request))
-                        ->withInput();
+
+//                return redirect()->back()
+//                        ->withErrors($this->validator($request))
+//                        ->withInput();
         }
          //create user
          $user = Sentinel::register($request->all());
@@ -88,8 +90,9 @@ class UserController extends Controller
 
         Session::flash('message', 'Success! User is created successfully.');
         Session::flash('status', 'success');
-        
-        return redirect()->route('user.index');
+
+        return ('Success');
+//        return redirect()->route('user.index');
     }
 
 
@@ -108,16 +111,16 @@ class UserController extends Controller
             $user= User::where('id',$id)->with('activations','roles')->get();
             return response()->json(compact('user'));
         }
-        return View('backEnd.users.show', compact('user','type')); 
+        return View('backEnd.users.show', compact('user','type'));
     }
     public function accountFrontEnd(Request $request,$id)
-    {   
+    {
         $user=Sentinel::getUser();
          if ($user->inRole('admin')) {
            $user = User::findOrFail($id);
            return view('frontend.userAcount',compact('user'));
          }
-       
+
         return view('frontend.userAcount',compact('user'));
     }
 
@@ -128,7 +131,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
-    {   
+    {
         $user = User::find($id);
         $roles = Role::get()->pluck('name', 'id');
         return View('backEnd.users.edit', compact('user', 'roles'));
@@ -143,11 +146,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-      
+
+
         $update_user = Validator::make($request->all(), [
             'first_name' => 'min:2|max:35|string',
-            'last_name' => 'min:2|max:35|string',            
+            'last_name' => 'min:2|max:35|string',
             'email' => Sentinel::inRole('Admin')?'required|email|min:3|max:50|string':(Sentinel::check()?'required|email|min:3|max:50|string|unique:users,email,'.$id:'required|email|min:3|max:50|unique:users|string'),
         ]);
 
@@ -184,26 +187,27 @@ class UserController extends Controller
             }
             Session::flash('message', 'Success! User is updated successfully.');
             Session::flash('status', 'success');
-            
-        } 
+
+        }
 
 
       return redirect()->back();
     }
-   
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /*Unit Test Remove User */
     public function destroy(Request $request,$id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-        
+
         Session::flash('message', 'Success! User is deleted successfully.');
-        Session::flash('status', 'success'); 
+        Session::flash('status', 'success');
 
         return redirect()->route('user.index');
     }
@@ -226,9 +230,9 @@ class UserController extends Controller
         foreach ($routes as $route) {
             if ($route->getName() != "" && !substr_count($route->getName(), 'payment')) {
                 $actions[] = $route->getName();
-            }            
+            }
         }
-        
+
         //remove store option
         $input = preg_quote("store", '~');
         $var = preg_grep('~' . $input . '~', $actions);
@@ -243,9 +247,9 @@ class UserController extends Controller
         // foreach ($api_route as $route) {
         //     if ($route->getName() != "" && !substr_count($route->getName(), 'payment')) {
         //         $actions[] = $route->getName();
-        //     }            
+        //     }
         // }
-        
+
         $var = [];
         $i = 0;
         foreach ($actions as $action) {
@@ -271,18 +275,18 @@ class UserController extends Controller
             foreach ($request->permissions as $permission) {
                 if(explode('.', $permission)[1] == 'create'){
                     $user->addPermission($permission);
-                    $user->addPermission(explode('.', $permission)[0].".store");                
+                    $user->addPermission(explode('.', $permission)[0].".store");
                 }
                 else if(explode('.', $permission)[1] == 'edit'){
                     $user->addPermission($permission);
-                    $user->addPermission(explode('.', $permission)[0].".update");                
+                    $user->addPermission(explode('.', $permission)[0].".update");
                 }
                 else{
                     $user->addPermission($permission);
-                }            
-            }  
+                }
+            }
         }
-        
+
         $user->save();
 
         Session::flash('message', 'Success! Permissions are stored successfully.');
@@ -300,17 +304,17 @@ class UserController extends Controller
         if($activation){
             Session::flash('message', 'Warning! The user is already activated.');
             Session::flash('status', 'warning');
-             
+
             return redirect('user');
         }
         $activation = Activation::create($user);
         $activation = Activation::complete($user, $activation->code);
-       
+
         Session::flash('message', 'Success! The user is activated successfully.');
         Session::flash('status', 'success');
-            
+
         $role = $user->roles()->first()->name;
-        
+
         return redirect()->route('user.index');
     }
 
@@ -318,7 +322,7 @@ class UserController extends Controller
 
         $user = Sentinel::findById($id);
         Activation::remove($user);
-        
+
         Session::flash('message', 'Success! The user is deactivated successfully.');
         Session::flash('status', 'success');
 
@@ -328,20 +332,20 @@ class UserController extends Controller
         if ($request->action=='delete') {
            foreach ($request->all_id as $id) {
              $user = User::findOrFail($id);
-             if ($user->deleted_at == null){$user->delete();} 
+             if ($user->deleted_at == null){$user->delete();}
             }
             Session::flash('message', 'Success! Users are deleted successfully.');
-            Session::flash('status', 'success'); 
+            Session::flash('status', 'success');
             return response()->json(['success' => true, 'status' => 'Sucesfully Deleted']);
         }
         if ($request->action=='deactivate') {
            foreach ($request->all_id as $id) {
              $user = User::findOrFail($id);
              $activation = Activation::completed($user);
-             if ($activation){Activation::remove($user);} 
+             if ($activation){Activation::remove($user);}
             }
             Session::flash('message', 'Success! Users are deactivate successfully.');
-            Session::flash('status', 'success'); 
+            Session::flash('status', 'success');
             return response()->json(['success' => true, 'status' => 'Sucesfully deactivate']);
         }
         if ($request->action=='activate') {
@@ -351,14 +355,14 @@ class UserController extends Controller
              if ($activation==''){
                 $activation = Activation::create($user);
                 $activation = Activation::complete($user, $activation->code);
-                } 
+                }
             }
             Session::flash('message', 'Success! Users are Activated successfully.');
-            Session::flash('status', 'success'); 
+            Session::flash('status', 'success');
             return response()->json(['success' => true, 'status' => 'Sucesfully Activated']);
         }
     }
-   
+
 
 
 

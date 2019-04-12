@@ -36,4 +36,13 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         //Update User Qr Code
         Route::get('my-qrcode', ['uses' => 'QrLoginController@ViewUserQrCode']);
         Route::post('qrLogin-autogenerate', ['uses' => 'QrLoginController@QrAutoGenerate']);
+
+
  });
+
+        Route::get('addUser', ['uses' => 'TestController@AddUsers']);
+        Route::get('removeStock', ['uses' => 'TestController@RemoveStock']);
+        Route::get('addStock', ['uses' => 'TestController@AddStock']);
+        Route::get('removeUser', ['uses' => 'TestController@removeUser']);
+        Route::get('addScan', ['uses' => 'addToStockController@displayQRScanner']);
+        Route::get('addStockForm', ['uses' => 'addToStockController@updateStock']);
