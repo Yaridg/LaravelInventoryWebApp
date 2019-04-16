@@ -14,13 +14,15 @@ class UserModelTest extends TestCase
      * A basic test example.
      * @test
      * @return void
+     *
      */
     public function UserAdd()
     {
         $response = $this->get('addUser');
 
         $response->assertSeeText('Success');
-        $response->assertStatus(200);
+        $response->assertStatus(404
+        );
     }
 
 

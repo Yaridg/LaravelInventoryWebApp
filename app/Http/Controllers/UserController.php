@@ -76,9 +76,9 @@ class UserController extends Controller
 
         if ($this->validator($request,Sentinel::getUser()->id)->fails()) {
 
-//                return redirect()->back()
-//                        ->withErrors($this->validator($request))
-//                        ->withInput();
+                return redirect()->back()
+                        ->withErrors($this->validator($request))
+                        ->withInput();
         }
          //create user
          $user = Sentinel::register($request->all());
@@ -91,8 +91,8 @@ class UserController extends Controller
         Session::flash('message', 'Success! User is created successfully.');
         Session::flash('status', 'success');
 
-        return ('Success');
-//        return redirect()->route('user.index');
+//        return ('Success');
+        return redirect()->route('user.index');
     }
 
 

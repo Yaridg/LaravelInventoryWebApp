@@ -40,9 +40,9 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
 
  });
 
-        Route::get('addUser', ['uses' => 'TestController@AddUsers']);
-        Route::get('removeStock', ['uses' => 'TestController@RemoveStock']);
-        Route::get('addStock', ['uses' => 'TestController@AddStock']);
-        Route::get('removeUser', ['uses' => 'TestController@removeUser']);
-        Route::get('addScan', ['uses' => 'addToStockController@displayQRScanner']);
-        Route::get('addStockForm', ['uses' => 'addToStockController@updateStock']);
+//        Route::get('addUser', ['uses' => 'TestController@AddUsers']);
+//        Route::get('removeStock', ['uses' => 'TestController@RemoveStock']);
+//        Route::get('addStock', ['uses' => 'TestController@AddStock']);
+//        Route::get('removeUser', ['uses' => 'TestController@removeUser']);
+//        Route::get('addScan', ['uses' => 'addToStockController@displayQRScanner']);
+//        Route::get('addStockForm', ['uses' => 'addToStockController@updateStock']);

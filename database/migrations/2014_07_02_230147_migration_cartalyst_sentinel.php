@@ -109,6 +109,7 @@ class MigrationCartalystSentinel extends Migration
             $table->engine = 'InnoDB';
             $table->unique('email');
         });
+
     }
 
     /**
@@ -125,5 +126,12 @@ class MigrationCartalystSentinel extends Migration
         Schema::drop('role_users');
         Schema::drop('throttle');
         Schema::drop('users');
+
+//        Schema::drop('LumberType');
+//        Schema::drop('LumberSize');
+//        Schema::drop('LumberDetail');
+//        Schema::drop('Report');
+//        Schema::drop('NewStockItem');
+//        Schema::drop('NewStock');
     }
 }
