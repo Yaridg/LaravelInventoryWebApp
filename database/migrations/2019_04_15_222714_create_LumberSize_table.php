@@ -15,8 +15,11 @@ class CreateLumberSizeTable extends Migration
     {
         Schema::create('LumberSize', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+//            $table->string('name');
 
+            $table->integer('length');
+            $table->integer('width');
+            $table->integer('height');
             $table->timestamps();
         });
     }
