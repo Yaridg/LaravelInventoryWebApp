@@ -25,6 +25,7 @@ class CreateLumberDetailTable extends Migration
             $table->integer('sizeID')->unsigned();
             $table->foreign('sizeID')->references('id')->on('LumberSize');
 
+
             $table->integer('BranchId')->unsigned();
             $table->foreign('BranchId')->references('id')->on('LumberYardBranch');
 

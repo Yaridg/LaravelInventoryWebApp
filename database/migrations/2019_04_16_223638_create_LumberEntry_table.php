@@ -27,6 +27,7 @@ class CreateLumberEntryTable extends Migration
             $table->dateTime('EntryDate');
             $table->integer('AmountEntered');
 
+
             $table->timestamps();
         });
 

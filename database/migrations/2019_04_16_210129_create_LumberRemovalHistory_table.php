@@ -29,6 +29,7 @@ class CreateLumberRemovalHistoryTable extends Migration
 
             $table->string('Description');
 
+
             $table->timestamps();
         });
     }

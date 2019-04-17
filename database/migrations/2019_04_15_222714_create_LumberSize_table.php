@@ -21,6 +21,7 @@ class CreateLumberSizeTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

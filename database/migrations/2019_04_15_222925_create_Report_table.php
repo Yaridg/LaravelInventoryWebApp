@@ -28,6 +28,7 @@ class CreateReportTable extends Migration
             $table->integer('ReportEntryId')->unsigned();
             $table->foreign('ReportEntryId')->references('id')->on('LumberEntry');
 
+
             $table->integer('ReportRemovalId')->unsigned();
             $table->foreign('ReportRemovalId')->references('id')->on('LumberRemovalHistory');
 
