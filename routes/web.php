@@ -37,7 +37,19 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         Route::get('my-qrcode', ['uses' => 'QrLoginController@ViewUserQrCode']);
         Route::post('qrLogin-autogenerate', ['uses' => 'QrLoginController@QrAutoGenerate']);
 
+        //QR Code
+        Route::get('generateQRCode', ['uses' => 'QRCode@generateQRCode']);
+        Route::get('getQRCodeValue', ['uses' => 'QRCode@getQRCodeValue']);
+        Route::get('scanQRCode', ['uses' => 'QRCode@scanQRCode']);
 
+        //Inventory
+        Route::get('addStock', ['uses' => 'InventoryItems@add']);
+        Route::get('removeStock', ['uses' => 'InventoryItems@remove']);
+        Route::get('searchInventory', ['uses' => 'InventoryItems@search']);
+
+
+
+        //Route::resource('inventory', 'InventoryItems');
  });
 
 //        Route::get('addUser', ['uses' => 'TestController@AddUsers']);

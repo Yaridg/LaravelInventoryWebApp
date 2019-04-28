@@ -1,7 +1,7 @@
 
 <div class="left_col scroll-view">
   <div class="navbar nav_title" style="border: 0;">
-    <a href="{{url('dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>Lumber Inventory</span></a>
+    <a href="{{url('dashboard')}}" class="site_title"><!--i class="fa fa-paw"></i--> <span>Lumber Inventory</span></a>
   </div>
 
   <div class="clearfix"></div>
@@ -25,6 +25,29 @@
     <div class="menu_section">
       <h3>General</h3>
       <ul class="nav side-menu">
+
+      <li><a href="{{URL::to('/addStock')}}"><i class="fa fa-plus"></i> Add Stock <!--span class="fa fa-chevron-down"></span--></a>
+          <!--ul class="nav child_menu">
+            <li><a href="{{route('role.index')}}">All Roles</a></li>
+            <li><a href="{{route('role.create')}}">New Role</a></li>
+          </ul-->
+        </li>
+
+        <li><a href="{{URL::to('/removeStock')}}"><i class="fa fa-minus"></i> Remove Stock <!--span class="fa fa-chevron-down"></span--></a>
+          <!--ul class="nav child_menu">
+            <li><a href="{{route('role.index')}}">All Roles</a></li>
+            <li><a href="{{route('role.create')}}">New Role</a></li>
+          </ul-->
+        </li>
+
+        <li><a href="{{URL::to('/searchInventory')}}"><i class="fa fa-search"></i> Search Inventory <!--span class="fa fa-chevron-down"></span--></a>
+          <!--ul class="nav child_menu">
+            <li><a href="{{route('role.index')}}">All Roles</a></li>
+            <li><a href="{{route('role.create')}}">New Role</a></li>
+          </ul-->
+        </li>
+
+
       @if (Sentinel::getUser()->hasAnyAccess(['user.*']))
         <li><a><i class="fa fa-users"></i>Users <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
@@ -41,6 +64,11 @@
           </ul>
         </li>
       @endif
+
+
+
+
+
       <li><a href="{{url('my-qrcode')}}">My Qr Code</a></li>
         <!-- <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
