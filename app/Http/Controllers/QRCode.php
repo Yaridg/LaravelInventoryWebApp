@@ -6,20 +6,25 @@ use Illuminate\Http\Request;
 
 class QRCode extends Controller
 {
-    public function scanQRCode(){
+    /*public function scanQRCode(){
         $data = array(
             'title' => 'Scan QR Code'
 
             );
 
         return view('backEnd.qr.scanqrcode')->with($data);
-    }
+    }*/
 
-    public function getQRCodeValue(){
-        $QRCodeReader = new Libern\QRCodeReader\QRCodeReader();
-        $qrcode_text = $QRCodeReader->decode(base64_encode("image_stream"));
-        return $qrcode_text;
-    }
+    /*public function getQRCodeValue(){
+        if ($request->filled('name')) {
+            //
+        }
+
+
+        //$QRCodeReader = new Libern\QRCodeReader\QRCodeReader();
+        //$qrcode_text = $QRCodeReader->decode(base64_encode("image_stream"));
+        //return $qrcode_text;
+    }*/
 
     public function generateQRCode(){
         //return "Generating QRCode...";
@@ -27,7 +32,7 @@ class QRCode extends Controller
         //return "{!! QrCode::generate('Welcome to kerneldev.com!'); !!}";
 
         $data = array(
-            'categoryID' => '123456789'
+            'categoryID' => '3'
 
             );
 

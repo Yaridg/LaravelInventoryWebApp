@@ -41,6 +41,7 @@
                 //alert("QRCode Content: " + content);
                   $('#qr-scanner-modal').modal('hide');
                   $("#qr-code-value").html(content);
+                  getCategoryFromQR(content);
 
                   try{
                         if(scanner != null){
@@ -63,6 +64,25 @@
               });
 
             $('#qr-scanner-modal').modal('show');
+        }
+
+        function getCategoryFromQR(qrvalue){
+            //$("#qr-code-value").html(qrvalue);
+            $.ajax({
+
+               type:'POST',
+
+               url:'/getCategory',
+
+               data:{categoryid:qrvalue},
+
+               success:function(data){
+
+                  alert(JSON.stringify(data));
+
+               }
+
+            });
         }
 
         function closeModal(){

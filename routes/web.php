@@ -47,7 +47,7 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         Route::get('removeStock', ['uses' => 'InventoryItems@remove']);
         Route::get('searchInventory', ['uses' => 'InventoryItems@search']);
 
-
+        Route::post('getCategory', ['uses' => 'InventoryItems@getCategory']);
 
         //Route::resource('inventory', 'InventoryItems');
  });
