@@ -40,24 +40,35 @@ class addToStockController extends Controller
     // Displays the inputForm
     public function displayEnterForm(){
         //selecting branches from database and passing it to the view
-        $branches = array (
-            "id" => "1","name"=>"test"
-        );
-        return view('backLayout.showAddStockForm');
+        $data = DB::select('select * from lumberyardbranch');
+
+        $branches= [];
+        foreach ($data as $branch) {
+            $branches[] = $branch->district;
+        }
+        return view('backLayout.showAddStockForm',['branches' => $branches]);
 
     }
     public function addLumber(Request $request){
 
-        print_r($request->all());
-        $lumberType = $request->get("length");
-        echo $lumberType;
-          DB::table('users')->insert(
-              array('user' => 'jdoe',
-                    'fname' => 'john',
-                    'lname' => 'doe',
-                    'email' => 'jdoe@example.com')
-          );
+        $lumberType = $request->input('lumberType');
+        $length = $request->input('length');
+        $width = $request->input('width');
+        $height = $request->input('height');
+        $branch = $request->districts[0]+1;
+        $amount = $request->input('amount');
+        //validate input
+        echo $lumberType." ".$length." ".$width." ".$height." ".$branch." ".$amount;
+        $typeID = DB::select("SELECT `id` FROM `lumbertype` WHERE `name` = '{$lumberType}'");
+        $typeID = $typeID[0]->id;
+        $sizeID = DB::select("SELECT `id` FROM `lumbersize` WHERE `lenght` = {$length} and `width`={$width} and `height`={$height}");
+        $sizeID = $sizeID[0]->id;
+        $branchID = $branch;
 
+        $amount = (int)$amount;
+        $lumberID = DB::select("SELECT id FROM `lumberdetail` WHERE `typeID` = {$typeID} and `sizeID` = {$sizeID} and `BranchId`= {$branchID}");
+        DB::update("UPDATE `lumberdetail` SET `Pieces` = {$amount} WHERE `id` = {$lumberID[0]->id}");
+        return $this->displayEnterForm(); 
     }
 
     /* @pre: requires qrcode

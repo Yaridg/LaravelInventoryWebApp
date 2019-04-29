@@ -42,10 +42,7 @@ Add Lumber to Stock
             <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
                 {!! Form::label('branch', 'Select Your Branch', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    <select name="branchID" class="form-control">
-                        <option value="1">Belize City</option>
-                        <option value="2">Belmopan</option>
-                    </select>
+                {!! Form::select('districts[]',$branches,null,['class' => 'form-control']) !!}
 
                 </div>
             </div>

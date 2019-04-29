@@ -13,15 +13,15 @@ class TransferController extends Controller
 
         $branches= [];
         foreach ($data as $branch) {
-            $branches[] = array('id' => $branch->id,'name'=>$branch->district);
+            $branches[] = $branch->district;
         }
-
-        return view('backEnd.transfer.index',$branches);
+        return view('backEnd.transfer.index',['branches' => $branches]);
     }
 
     public function store(Request $request)
     {
-
-        return 123;
+        $qrCode = $request->input('qrCode');
+        $amount = $request->input('amount');
+        $districtID = $request->transfer;
     }
 }
