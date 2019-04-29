@@ -33,7 +33,7 @@
           </ul-->
         </li>
 
-        <li><a href="{{URL::to('/removeStock')}}"><i class="fa fa-minus"></i> Remove Stock <!--span class="fa fa-chevron-down"></span--></a>
+        <li><a href="{{URL::to('/removeFromStock')}}"><i class="fa fa-minus"></i> Remove Stock <!--span class="fa fa-chevron-down"></span--></a>
           <!--ul class="nav child_menu">
             <li><a href="{{route('role.index')}}">All Roles</a></li>
             <li><a href="{{route('role.create')}}">New Role</a></li>
