@@ -53,6 +53,10 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         Route::get('transfer', ['uses' => 'TransferController@index']);
         Route::post('transfer/store', ['uses' => 'TransferController@store']);
 
+        //Report
+        Route::get('report', ['uses' => 'ReportController@index']);
+
+
         //Route::resource('inventory', 'InventoryItems');
  });
 

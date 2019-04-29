@@ -20,7 +20,7 @@ Transfer
 
                 <div>@include('backEnd.qr.scanqrcode')</div> <!-- This Line Creates the Scan QR Button anywhere you put this piece of code -->
                 QR Code Value:
-                <div id="qr-code-value"></div> <!-- This is required cause the result will be added to this. Could be put any where -->
+                <input type="text" class="input-group" id="qrCode"name="qrCode" style="display: inline-block;" disabled> <!-- This is required cause the result will be added to this. Could be put any where -->
                 <!-------------------------->
 
                 </div>

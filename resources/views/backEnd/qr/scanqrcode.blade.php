@@ -41,6 +41,9 @@
                 //alert("QRCode Content: " + content);
                   $('#qr-scanner-modal').modal('hide');
                   $("#qr-code-value").html(content);
+                  if($("#qrCode").val(content)){}
+                  
+
                   getCategoryFromQR(content);
 
                   try{
