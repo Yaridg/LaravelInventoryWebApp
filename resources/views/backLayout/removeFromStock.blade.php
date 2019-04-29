@@ -5,7 +5,7 @@ Add Lumber to Stock
 
 @section('content')
 <div class="panel panel-default">
-        <div class="panel-heading">Add Lumber to stock</div>
+        <div class="panel-heading">Remove Lumber from Stock</div>
 
         <div class="panel-body">
 
