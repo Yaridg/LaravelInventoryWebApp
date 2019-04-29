@@ -63,7 +63,7 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
 
         //Report
         Route::get('report', ['uses' => 'ReportController@index']);
-
+        Route::get('LumberDetails', ['uses' => 'addToStockController@viewLumber']);
 
         //Route::resource('inventory', 'InventoryItems');
  });
