@@ -11,4 +11,11 @@ class TransferController extends Controller
     {
         return view('backEnd.transfer.index');
     }
+
+    public function store(Request $request)
+    {
+        //insert the amount to a branch
+        
+        return 123;
+    }
 }
