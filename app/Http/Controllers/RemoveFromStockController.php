@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-
 class RemoveFromStockController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //selecting branches from database and passing it to the view
         $data = DB::select('select * from lumberyardbranch');

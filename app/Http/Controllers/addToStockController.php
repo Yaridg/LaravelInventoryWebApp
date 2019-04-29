@@ -57,6 +57,7 @@ class addToStockController extends Controller
         $height = $request->input('height');
         $branch = $request->districts[0]+1;
         $amount = $request->input('amount');
+        $id = $request->user()->id;
         //validate input
         $typeID = DB::select("SELECT `id` FROM `lumbertype` WHERE `name` = '{$lumberType}'");
         $typeID = $typeID[0]->id;
@@ -67,6 +68,8 @@ class addToStockController extends Controller
         $amount = (int)$amount;
         $lumberID = DB::select("SELECT id FROM `lumberdetail` WHERE `typeID` = {$typeID} and `sizeID` = {$sizeID} and `BranchId`= {$branchID}");
         DB::update("UPDATE `lumberdetail` SET `Pieces` = {$amount} WHERE `id` = {$lumberID[0]->id}");
+        $DATE = date('Y/m/d H:i:s');
+        DB::insert("INSERT INTO `lumberentry`( `UserId`, `LumberDetId`, `EntryDate`, `AmountEntered`) VALUES ({$id},{$lumberID[0]->id},'{$DATE}',{$amount})");
         return $this->displayEnterForm(); 
     }
 
