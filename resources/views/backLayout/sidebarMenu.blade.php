@@ -42,12 +42,15 @@
 
         <li><a href="{{URL::to('/transfer')}}"><i class="glyphicon glyphicon-transfer"></i> Transfer Stock <!--span class="fa fa-chevron-down"></span--></a>
         </li>
+        
+        @if (Sentinel::getUser()->hasAnyAccess(['user.*']))
         <li><a href="{{URL::to('/searchInventory')}}"><i class="fa fa-search"></i> Search Inventory <!--span class="fa fa-chevron-down"></span--></a>
           <!--ul class="nav child_menu">
             <li><a href="{{route('role.index')}}">All Roles</a></li>
             <li><a href="{{route('role.create')}}">New Role</a></li>
           </ul-->
         </li>
+        @endif
 
 
       @if (Sentinel::getUser()->hasAnyAccess(['user.*']))

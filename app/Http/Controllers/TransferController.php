@@ -14,8 +14,7 @@ class TransferController extends Controller
 
     public function store(Request $request)
     {
-        //insert the amount to a branch
-        
+
         return 123;
     }
 }
