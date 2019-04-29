@@ -26,7 +26,7 @@
       <h3>General</h3>
       <ul class="nav side-menu">
 
-      <li><a href="{{URL::to('/addStock')}}"><i class="fa fa-plus"></i> Add Stock <!--span class="fa fa-chevron-down"></span--></a>
+      <li><a href="{{URL::to('/addStockForm')}}"><i class="fa fa-plus"></i> Add Stock <!--span class="fa fa-chevron-down"></span--></a>
           <!--ul class="nav child_menu">
             <li><a href="{{route('role.index')}}">All Roles</a></li>
             <li><a href="{{route('role.create')}}">New Role</a></li>

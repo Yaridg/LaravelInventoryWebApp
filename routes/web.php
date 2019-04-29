@@ -43,7 +43,9 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         Route::get('scanQRCode', ['uses' => 'QRCode@scanQRCode']);
 
         //Inventory
-        Route::get('addStock', ['uses' => 'InventoryItems@add']);
+        //route for add lumber form
+        Route::post('addLumber', ['uses' => 'addToStockController@addLumber']);
+        Route::get('addStockForm', ['uses' => 'addToStockController@displayEnterForm']);
         Route::get('removeStock', ['uses' => 'InventoryItems@remove']);
         Route::get('searchInventory', ['uses' => 'InventoryItems@search']);
 

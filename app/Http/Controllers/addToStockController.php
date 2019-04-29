@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+
 class addToStockController extends Controller
 {
     private $qrCodeLumberType;
@@ -36,7 +39,25 @@ class addToStockController extends Controller
 
     // Displays the inputForm
     public function displayEnterForm(){
+        //selecting branches from database and passing it to the view
+        $branches = array (
+            "id" => "1","name"=>"test"
+        );
         return view('backLayout.showAddStockForm');
+
+    }
+    public function addLumber(Request $request){
+
+        print_r($request->all());
+        $lumberType = $request->get("length");
+        echo $lumberType;
+          DB::table('users')->insert(
+              array('user' => 'jdoe',
+                    'fname' => 'john',
+                    'lname' => 'doe',
+                    'email' => 'jdoe@example.com')
+          );
+
     }
 
     /* @pre: requires qrcode
