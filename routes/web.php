@@ -48,7 +48,9 @@ Route::post('qrLogin', ['uses' => 'QrLoginController@checkUser']);
         Route::get('searchInventory', ['uses' => 'InventoryItems@search']);
 
         Route::post('getCategory', ['uses' => 'InventoryItems@getCategory']);
-
+        //Transfer
+        Route::resource('transfer', 'TransferController');
+        Route::get('transfer', ['uses' => 'TransferController@index']);
         //Route::resource('inventory', 'InventoryItems');
  });
 

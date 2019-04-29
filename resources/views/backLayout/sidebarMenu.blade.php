@@ -65,10 +65,6 @@
         </li>
       @endif
 
-
-
-
-
       <li><a href="{{url('my-qrcode')}}">My Qr Code</a></li>
         <!-- <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
