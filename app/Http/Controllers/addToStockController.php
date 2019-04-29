@@ -58,7 +58,6 @@ class addToStockController extends Controller
         $branch = $request->districts[0]+1;
         $amount = $request->input('amount');
         //validate input
-        echo $lumberType." ".$length." ".$width." ".$height." ".$branch." ".$amount;
         $typeID = DB::select("SELECT `id` FROM `lumbertype` WHERE `name` = '{$lumberType}'");
         $typeID = $typeID[0]->id;
         $sizeID = DB::select("SELECT `id` FROM `lumbersize` WHERE `lenght` = {$length} and `width`={$width} and `height`={$height}");
