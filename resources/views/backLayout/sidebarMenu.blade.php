@@ -40,6 +40,8 @@
           </ul-->
         </li>
 
+        <li><a href="{{URL::to('/transfer')}}"><i class="glyphicon glyphicon-transfer"></i> Transfer Stock <!--span class="fa fa-chevron-down"></span--></a>
+        </li>
         <li><a href="{{URL::to('/searchInventory')}}"><i class="fa fa-search"></i> Search Inventory <!--span class="fa fa-chevron-down"></span--></a>
           <!--ul class="nav child_menu">
             <li><a href="{{route('role.index')}}">All Roles</a></li>
